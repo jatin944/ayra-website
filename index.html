@@ -11,1020 +11,693 @@
 <meta property="og:description" content="Technology + Consulting + Packaging Expertise + Execution.">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://ayracarbon.com">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23f4f1e8'/%3E%3Ctext x='50' y='72' font-family='Georgia,serif' font-size='70' font-weight='500' text-anchor='middle' fill='%230f1410'%3EA%3C/text%3E%3Ccircle cx='78' cy='72' r='4' fill='%233d5a3d'/%3E%3C/svg%3E">
-<title>Ayra — Packaging Innovation & Circular Economy</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=JetBrains+Mono:wght@300;400;500&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  :root {
-    --paper: #f4f1e8;
-    --paper-dark: #ebe6d4;
-    --ink: #0f1410;
-    --ink-soft: #2a3128;
-    --moss: #3d5a3d;
-    --moss-bright: #6b9b6b;
-    --rust: #c4633a;
-    --rule: #c8c2a8;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: 'Inter Tight', sans-serif;
-    font-weight: 400;
-    line-height: 1.5;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 1;
-    opacity: 0.05;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-
-  .container { max-width: 1440px; margin: 0 auto; padding: 0 48px; position: relative; z-index: 2; }
-
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    padding: 18px 48px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 100;
-    backdrop-filter: blur(12px);
-    background: rgba(244, 241, 232, 0.85);
-    border-bottom: 1px solid var(--rule);
-  }
-
-  .nav-logo { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
-  .nav-logo span { color: var(--moss); font-style: italic; font-weight: 400; }
-
-  .nav-links { display: flex; gap: 32px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; }
-  .nav-links a { color: var(--ink-soft); text-decoration: none; transition: color 0.3s; cursor: pointer; }
-  .nav-links a:hover { color: var(--moss); }
-
-  .nav-cta { padding: 10px 20px; background: var(--ink); color: var(--paper); text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; border-radius: 2px; transition: all 0.3s; }
-  .nav-cta:hover { background: var(--moss); transform: translateY(-2px); }
-
-  /* HERO */
-  .hero { min-height: 100vh; padding: 120px 0 60px; position: relative; overflow: hidden; }
-
-  .hero-meta { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 48px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-soft); }
-  .hero-meta-block { display: flex; flex-direction: column; gap: 6px; }
-  .hero-meta-block .label { color: var(--moss); }
-  .hero-meta-block .value { color: var(--ink); font-size: 12px; letter-spacing: 0.05em; }
-
-  .hero-body { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
-
-  .hero-left {}
-
-  .hero h1 {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(48px, 7.5vw, 120px);
-    font-weight: 300;
-    line-height: 0.93;
-    letter-spacing: -0.04em;
-    color: var(--ink);
-    margin-bottom: 32px;
-    opacity: 0;
-    animation: rise 1.2s 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-  .hero h1 .accent { font-style: italic; font-weight: 400; color: var(--moss); }
-
-  .hero-lede { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 300; line-height: 1.5; letter-spacing: -0.01em; color: var(--ink-soft); margin-bottom: 40px; opacity: 0; animation: rise 1.2s 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-  .hero-lede em { color: var(--rust); font-style: italic; }
-
-  .hero-kpis { display: flex; gap: 40px; border-top: 1px solid var(--rule); padding-top: 28px; opacity: 0; animation: rise 1.2s 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-  .hero-kpi .num { font-family: 'Fraunces', serif; font-size: 40px; font-weight: 400; color: var(--ink); letter-spacing: -0.03em; line-height: 1; }
-  .hero-kpi .num em { color: var(--moss); font-style: italic; }
-  .hero-kpi .lbl { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); margin-top: 4px; }
-
-  .hero-illustration { display: flex; align-items: center; justify-content: center; opacity: 0; animation: rise 1.2s 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-
-  /* SECTION SHARED */
-  .section-tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--moss); margin-bottom: 20px; display: flex; align-items: center; gap: 16px; }
-  .section-tag::before { content: ''; width: 32px; height: 1px; background: var(--moss); }
-
-  .section-h2 { font-family: 'Fraunces', serif; font-size: clamp(32px, 4.5vw, 64px); font-weight: 300; line-height: 1.05; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 48px; max-width: 900px; }
-  .section-h2 em { font-style: italic; font-weight: 400; color: var(--moss); }
-
-  /* CHALLENGE */
-  .challenge { padding: 80px 0; }
-
-  .challenge-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 64px; }
-  .challenge-text {}
-  .challenge-visual { display: flex; justify-content: center; }
-
-  .pillars { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; border-top: 1px solid var(--rule); }
-  .pillar { padding: 28px 16px 28px 0; border-right: 1px solid var(--rule); transition: background 0.4s; }
-  .pillar:last-child { border-right: none; }
-  .pillar:hover { background: rgba(107,155,107,0.06); }
-  .pillar-icon { margin-bottom: 16px; }
-  .pillar-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; color: var(--moss); margin-bottom: 10px; }
-  .pillar h3 { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 400; line-height: 1.25; letter-spacing: -0.01em; color: var(--ink); margin-bottom: 8px; }
-  .pillar h3 em { font-style: italic; color: var(--rust); }
-  .pillar p { font-size: 12px; line-height: 1.55; color: var(--ink-soft); }
-
-  /* APPROACH */
-  .approach { padding: 80px 0; background: var(--paper-dark); }
-
-  .approach-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-  .approach-text {}
-  .approach-visual { display: flex; justify-content: center; }
-
-  .approach-steps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 1px solid var(--rule); margin-top: 0; }
-  .step { padding: 28px 20px 28px 0; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); transition: background 0.4s; }
-  .step:nth-child(2n) { border-right: none; padding-right: 0; padding-left: 20px; }
-  .step:nth-child(n+3) { border-bottom: none; }
-  .step:hover { background: rgba(107,155,107,0.06); }
-  .step-icon { margin-bottom: 12px; }
-  .step-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--moss); margin-bottom: 6px; }
-  .step h3 { font-family: 'Fraunces', serif; font-size: 24px; font-weight: 400; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 12px; font-style: italic; }
-  .step ul { list-style: none; display: flex; flex-direction: column; gap: 5px; }
-  .step ul li { font-size: 12px; color: var(--ink-soft); padding-left: 14px; position: relative; }
-  .step ul li::before { content: '—'; position: absolute; left: 0; color: var(--moss); font-size: 10px; }
-
-  /* SOLUTIONS */
-  .solutions { padding: 80px 0; }
-
-  .solutions-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 48px; }
-  .solutions-visual { display: flex; justify-content: center; }
-
-  .solutions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--rule); }
-  .solution-card { padding: 28px 24px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); transition: background 0.4s; }
-  .solution-card:nth-child(3n) { border-right: none; }
-  .solution-card:nth-child(n+4) { border-bottom: none; }
-  .solution-card:hover { background: rgba(107,155,107,0.06); }
-  .solution-icon { margin-bottom: 14px; }
-  .solution-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: var(--moss); margin-bottom: 8px; }
-  .solution-card h3 { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 400; letter-spacing: -0.01em; color: var(--ink); margin-bottom: 10px; line-height: 1.2; }
-  .solution-card h3 em { font-style: italic; color: var(--rust); }
-  .solution-card p { font-size: 12px; line-height: 1.6; color: var(--ink-soft); }
-  .solution-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 14px; }
-  .solution-tag { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--moss); border: 1px solid var(--rule); padding: 3px 7px; border-radius: 2px; }
-
-  /* PLATFORM STRIP */
-  .platform-strip { background: var(--ink); color: var(--paper); padding: 80px 0; }
-  .platform-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-  .platform-text .section-tag { color: var(--moss-bright); }
-  .platform-text .section-tag::before { background: var(--moss-bright); }
-  .platform-h2 { font-family: 'Fraunces', serif; font-size: clamp(28px, 4vw, 52px); font-weight: 300; line-height: 1.1; letter-spacing: -0.03em; color: var(--paper); margin-bottom: 32px; max-width: 480px; }
-  .platform-h2 em { font-style: italic; color: var(--moss-bright); }
-  .platform-features { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid rgba(244,241,232,0.15); }
-  .platform-feat { padding: 18px 16px 18px 0; border-right: 1px solid rgba(244,241,232,0.15); border-bottom: 1px solid rgba(244,241,232,0.15); }
-  .platform-feat:nth-child(2n) { border-right: none; padding-left: 16px; padding-right: 0; }
-  .platform-feat:nth-child(n+5) { border-bottom: none; }
-  .platform-feat-name { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--moss-bright); margin-bottom: 4px; }
-  .platform-feat p { font-size: 12px; color: rgba(244,241,232,0.65); line-height: 1.5; }
-  .platform-visual { display: flex; justify-content: center; }
-
-  /* TEAM */
-  .team { padding: 80px 0; }
-  .team-intro { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; margin-bottom: 48px; align-items: end; }
-  .team-intro h2 { font-family: 'Fraunces', serif; font-size: clamp(36px, 5vw, 80px); font-weight: 300; line-height: 0.95; letter-spacing: -0.04em; color: var(--ink); }
-  .team-intro h2 em { font-style: italic; color: var(--moss); font-weight: 400; }
-  .team-intro p { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 300; line-height: 1.55; color: var(--ink-soft); max-width: 540px; border-left: 1px solid var(--rule); padding-left: 28px; }
-  .founder { padding: 40px 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule); }
-
-  /* FOOTER */
-  footer { background: var(--ink); color: var(--paper); padding: 60px 0 40px; }
-  .footer-headline { font-family: 'Fraunces', serif; font-size: clamp(40px, 7vw, 110px); font-weight: 300; line-height: 0.95; letter-spacing: -0.04em; margin-bottom: 48px; max-width: 1200px; }
-  .footer-headline em { font-style: italic; color: var(--moss-bright); font-weight: 400; }
-  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-top: 36px; border-top: 1px solid rgba(244,241,232,0.15); margin-bottom: 40px; }
-  .footer-col h4 { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--moss-bright); margin-bottom: 14px; }
-  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-  .footer-col a { color: rgba(244,241,232,0.7); text-decoration: none; font-size: 13px; transition: color 0.2s; }
-  .footer-col a:hover { color: var(--paper); }
-  .footer-mark { font-family: 'Fraunces', serif; font-size: 26px; font-weight: 500; letter-spacing: -0.02em; margin-bottom: 10px; }
-  .footer-mark span { color: var(--moss-bright); font-style: italic; font-weight: 400; }
-  .footer-tagline { font-family: 'Fraunces', serif; font-style: italic; color: rgba(244,241,232,0.55); font-size: 14px; max-width: 300px; line-height: 1.5; }
-  .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; border-top: 1px solid rgba(244,241,232,0.15); font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: rgba(244,241,232,0.4); }
-
-  /* ANIMATIONS */
-  @keyframes rise { from { opacity: 0; transform: translateY(36px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes float { 0%,100% { transform: translate(0,0) rotate(0deg); } 50% { transform: translate(-12px,20px) rotate(5deg); } }
-  @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1); }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-
-  .spin-anim { animation: spin-slow 40s linear infinite; transform-origin: center; }
-
-  @media (max-width: 1024px) {
-    .hero-body, .challenge-layout, .approach-layout, .solutions-intro, .platform-inner, .team-intro { grid-template-columns: 1fr; gap: 40px; }
-    .hero-illustration, .challenge-visual, .approach-visual, .solutions-visual, .platform-visual { display: none; }
-    .pillars { grid-template-columns: 1fr 1fr; }
-    .pillar { border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
-    .pillar:nth-child(2n) { border-right: none; }
-  }
-  @media (max-width: 768px) {
-    .container { padding: 0 24px; }
-    nav { padding: 14px 24px; }
-    .nav-links { display: none; }
-    .pillars, .approach-steps, .solutions-grid { grid-template-columns: 1fr; }
-    .footer-grid { grid-template-columns: 1fr 1fr; }
-    .hero-kpis { flex-wrap: wrap; gap: 24px; }
-  }
-</style>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230d2818'/%3E%3Ctext x='50' y='72' font-family='Georgia,serif' font-size='70' font-weight='300' text-anchor='middle' fill='%23f4f1e8'%3EA%3C/text%3E%3Ccircle cx='78' cy='72' r='5' fill='%2352b788'/%3E%3C/svg%3E">
+<title>Ayra — Packaging Innovation & Circular Economy | Carbon Cycle Trace Pvt Ltd</title>
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/animations.css">
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">Ayra<span>.</span></div>
-  <div class="nav-links">
-    <a href="#challenge">Challenge</a>
-    <a href="#approach">Approach</a>
-    <a href="#solutions">Solutions</a>
-    <a href="#team">Team</a>
+<!-- ===================== NAV ===================== -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a href="#" class="nav__logo" aria-label="Ayra home">Ayra<span>.</span></a>
+    <ul class="nav__links">
+      <li><a href="#challenge">Challenge</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#solutions">Solutions</a></li>
+      <li><a href="#team">Team</a></li>
+    </ul>
+    <a href="#contact" class="nav__cta">Talk to us →</a>
   </div>
-  <a href="#contact" class="nav-cta">Talk to us →</a>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="container">
-    <div class="hero-meta">
-      <div class="hero-meta-block">
-        <span class="label">// Bengaluru → Mumbai → Open Source</span>
-        <span class="value">Carbon Cycle Trace Pvt Ltd</span>
-      </div>
-      <div class="hero-meta-block" style="text-align:right;">
-        <span class="label">Edition 01 / 2026</span>
-        <span class="value">Apache 2.0 · DPG Candidate</span>
-      </div>
-    </div>
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="hero" aria-label="Hero">
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="hero__grain" aria-hidden="true"></div>
 
-    <div class="hero-body">
-      <div class="hero-left">
-        <h1>
-          Packaging<br>
-          <span class="accent">innovation</span><br>
-          meets circular<br>
-          <span class="accent">economy.</span>
+  <div class="container">
+    <div class="hero__content">
+
+      <div class="hero__left">
+        <div class="hero__meta" aria-label="Company details">
+          <span class="hero__meta-line hero__meta-line--label">// Bengaluru → Mumbai → Open Source</span>
+          <span class="hero__meta-line hero__meta-line--value">Carbon Cycle Trace Pvt Ltd</span>
+          <span class="hero__meta-line hero__meta-line--label" style="margin-top:8px;">Edition 01 / 2026</span>
+          <span class="hero__meta-line hero__meta-line--value">Apache 2.0 · DPG Candidate</span>
+        </div>
+
+        <h1 class="hero__headline">
+          <span class="word"><span class="word-inner">Packaging</span></span>
+          <br>
+          <span class="word"><span class="word-inner accent">innovation</span></span>
+          <span class="word"><span class="word-inner"> meets</span></span>
+          <br>
+          <span class="word"><span class="word-inner">circular</span></span>
+          <span class="word"><span class="word-inner accent"> economy.</span></span>
         </h1>
-        <p class="hero-lede">
+
+        <p class="hero__lede">
           Helping brands transform packaging into <em>measurable environmental impact</em> — through technology, consulting, and fifteen years of hands-on expertise.
         </p>
-        <div class="hero-kpis">
-          <div class="hero-kpi">
-            <div class="num">20<em>+</em></div>
-            <div class="lbl">FMCG brands<br>onboarded</div>
+
+        <div class="hero__cta-row">
+          <a href="#solutions" class="btn btn-primary">Explore solutions →</a>
+          <a href="#approach" class="btn btn-ghost">Our approach</a>
+        </div>
+      </div>
+
+      <div class="hero__right">
+        <div class="kpi-card">
+          <div class="kpi-card__icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <path d="M4 17 L8 12 L12 14 L18 7" stroke="#52b788" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="18" cy="7" r="2.5" fill="#52b788" opacity="0.3" stroke="#52b788" stroke-width="1.2"/>
+            </svg>
           </div>
-          <div class="hero-kpi">
-            <div class="num"><em>15</em>+</div>
-            <div class="lbl">Years rPET &<br>packaging expertise</div>
+          <div class="kpi-card__body">
+            <div class="kpi-card__num"><span data-target="20" data-suffix="+">20+</span></div>
+            <div class="kpi-card__label">FMCG brands onboarded</div>
           </div>
-          <div class="hero-kpi">
-            <div class="num">5</div>
-            <div class="lbl">Live MRF &<br>recycler deployments</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-card__icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <circle cx="11" cy="11" r="7" stroke="#52b788" stroke-width="1.5" fill="none"/>
+              <circle cx="11" cy="11" r="3" fill="#52b788" opacity="0.25" stroke="#52b788" stroke-width="1.2"/>
+              <line x1="11" y1="4" x2="11" y2="7" stroke="#52b788" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="11" y1="15" x2="11" y2="18" stroke="#52b788" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="kpi-card__body">
+            <div class="kpi-card__num"><em>15</em><span data-target="15" data-suffix="+">+</span></div>
+            <div class="kpi-card__label">Years rPET &amp; packaging expertise</div>
+          </div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-card__icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <rect x="3" y="8" width="6" height="11" rx="1.5" stroke="#52b788" stroke-width="1.5" fill="none"/>
+              <rect x="8" y="5" width="6" height="14" rx="1.5" stroke="#52b788" stroke-width="1.5" fill="none"/>
+              <rect x="13" y="3" width="6" height="16" rx="1.5" fill="#52b788" fill-opacity="0.15" stroke="#52b788" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="kpi-card__body">
+            <div class="kpi-card__num"><span data-target="5">5</span></div>
+            <div class="kpi-card__label">Live MRF &amp; recycler deployments</div>
           </div>
         </div>
       </div>
 
-      <div class="hero-illustration">
-        <!-- Circular Economy Flow Diagram -->
-        <svg viewBox="0 0 480 480" width="480" height="480" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Outer decorative ring -->
-          <circle cx="240" cy="240" r="210" stroke="#c8c2a8" stroke-width="0.5" stroke-dasharray="4 6"/>
-
-          <!-- Spinning ring (via CSS) -->
-          <g class="spin-anim">
-            <circle cx="240" cy="240" r="180" stroke="#3d5a3d" stroke-width="1" stroke-dasharray="3 12" fill="none" opacity="0.4"/>
-          </g>
-
-          <!-- Main circle track -->
-          <circle cx="240" cy="240" r="150" stroke="#c8c2a8" stroke-width="1" fill="none"/>
-
-          <!-- Node positions (r=150 from center 240,240):
-               Brand      0°   → (240, 90)
-               Consumer  60°   → (370, 165)
-               Collection 120° → (370, 315)
-               Recycling 180°  → (240, 390)
-               Sorting   240°  → (110, 315)
-               Mfg       300°  → (110, 165)
-          -->
-
-          <!-- Curved arrows between nodes (arcs along track) -->
-          <!-- Arrow: Brand → Consumer -->
-          <path d="M 255 94 A 150 150 0 0 1 363 172" stroke="#6b9b6b" stroke-width="2" fill="none" marker-end="url(#arr)"/>
-          <!-- Arrow: Consumer → Collection -->
-          <path d="M 368 182 A 150 150 0 0 1 368 308" stroke="#6b9b6b" stroke-width="2" fill="none" marker-end="url(#arr)"/>
-          <!-- Arrow: Collection → Recycling -->
-          <path d="M 363 322 A 150 150 0 0 1 255 386" stroke="#6b9b6b" stroke-width="2" fill="none" marker-end="url(#arr)"/>
-          <!-- Arrow: Recycling → Sorting -->
-          <path d="M 225 386 A 150 150 0 0 1 117 322" stroke="#6b9b6b" stroke-width="2" fill="none" marker-end="url(#arr)"/>
-          <!-- Arrow: Sorting → Manufacturing -->
-          <path d="M 112 308 A 150 150 0 0 1 112 182" stroke="#6b9b6b" stroke-width="2" fill="none" marker-end="url(#arr)"/>
-          <!-- Arrow: Manufacturing → Brand -->
-          <path d="M 117 172 A 150 150 0 0 1 225 94" stroke="#6b9b6b" stroke-width="2" fill="none" marker-end="url(#arr)"/>
-
-          <!-- Arrowhead marker -->
-          <defs>
-            <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-              <path d="M0,0 L0,6 L8,3 z" fill="#6b9b6b"/>
-            </marker>
-          </defs>
-
-          <!-- Node circles + labels -->
-          <!-- Brand (top) -->
-          <circle cx="240" cy="90" r="34" fill="#f4f1e8" stroke="#3d5a3d" stroke-width="1.5"/>
-          <text x="240" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="10" fill="#0f1410" font-style="italic">Brand</text>
-          <text x="240" y="98" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#3d5a3d" letter-spacing="0.1em">DEMAND</text>
-
-          <!-- Consumer (top-right) -->
-          <circle cx="370" cy="165" r="34" fill="#f4f1e8" stroke="#3d5a3d" stroke-width="1.5"/>
-          <text x="370" y="161" text-anchor="middle" font-family="Fraunces, serif" font-size="10" fill="#0f1410" font-style="italic">Consumer</text>
-          <text x="370" y="173" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#3d5a3d" letter-spacing="0.1em">USE</text>
-
-          <!-- Collection (bottom-right) -->
-          <circle cx="370" cy="315" r="34" fill="#f4f1e8" stroke="#3d5a3d" stroke-width="1.5"/>
-          <text x="370" y="311" text-anchor="middle" font-family="Fraunces, serif" font-size="9.5" fill="#0f1410" font-style="italic">Collection</text>
-          <text x="370" y="323" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#3d5a3d" letter-spacing="0.1em">GATHER</text>
-
-          <!-- Recycling (bottom) -->
-          <circle cx="240" cy="390" r="34" fill="#3d5a3d" stroke="#3d5a3d" stroke-width="1.5"/>
-          <text x="240" y="386" text-anchor="middle" font-family="Fraunces, serif" font-size="10" fill="#f4f1e8" font-style="italic">Recycling</text>
-          <text x="240" y="398" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#6b9b6b" letter-spacing="0.1em">PROCESS</text>
-
-          <!-- Sorting (bottom-left) -->
-          <circle cx="110" cy="315" r="34" fill="#f4f1e8" stroke="#3d5a3d" stroke-width="1.5"/>
-          <text x="110" y="311" text-anchor="middle" font-family="Fraunces, serif" font-size="10" fill="#0f1410" font-style="italic">Sorting</text>
-          <text x="110" y="323" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#3d5a3d" letter-spacing="0.1em">FILTER</text>
-
-          <!-- Manufacturing (top-left) -->
-          <circle cx="110" cy="165" r="34" fill="#f4f1e8" stroke="#3d5a3d" stroke-width="1.5"/>
-          <text x="110" y="158" text-anchor="middle" font-family="Fraunces, serif" font-size="9" fill="#0f1410" font-style="italic">Manu-</text>
-          <text x="110" y="169" text-anchor="middle" font-family="Fraunces, serif" font-size="9" fill="#0f1410" font-style="italic">facturing</text>
-          <text x="110" y="180" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#3d5a3d" letter-spacing="0.1em">MAKE</text>
-
-          <!-- Center label -->
-          <text x="240" y="232" text-anchor="middle" font-family="Fraunces, serif" font-size="22" font-weight="300" fill="#0f1410" letter-spacing="-0.03em">Circular</text>
-          <text x="240" y="256" text-anchor="middle" font-family="Fraunces, serif" font-size="22" font-weight="300" fill="#3d5a3d" font-style="italic" letter-spacing="-0.03em">Economy</text>
-        </svg>
-      </div>
     </div>
+  </div>
+
+  <div class="hero__scroll" aria-hidden="true">
+    <div class="hero__scroll-line"></div>
+    <span class="hero__scroll-label">Scroll</span>
   </div>
 </section>
 
-<!-- THE CHALLENGE -->
-<section class="challenge" id="challenge">
+<!-- ===================== CHALLENGE ===================== -->
+<section class="challenge" id="challenge" aria-labelledby="challenge-title">
   <div class="container">
-    <div class="challenge-layout reveal">
-      <div class="challenge-text">
-        <div class="section-tag">The Challenge</div>
-        <h2 class="section-h2">Sustainable packaging requires <em>redesigning</em> the complete ecosystem — not just changing materials.</h2>
-        <p style="font-size:15px; color:var(--ink-soft); line-height:1.65; max-width:480px;">Brands today face pressure from regulators, consumers and investors simultaneously. Meeting these demands requires a partner with both the technical depth and the execution capability to deliver real change — not just reports.</p>
+
+    <div class="challenge__intro reveal">
+      <div class="challenge__text">
+        <span class="tag">The Challenge</span>
+        <h2 class="section-title" id="challenge-title" style="margin:16px 0 24px;">
+          Sustainable packaging requires <em>redesigning</em> the complete ecosystem — not just changing materials.
+        </h2>
+        <p class="challenge__body">
+          Brands today face pressure from regulators, consumers and investors simultaneously. Meeting these demands requires a partner with both the technical depth and the execution capability to deliver real change — not just reports.
+        </p>
       </div>
-      <div class="challenge-visual">
+
+      <div class="challenge__visual">
         <!-- Pressure diagram -->
-        <svg viewBox="0 0 380 380" width="380" height="380" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Central brand circle -->
-          <circle cx="190" cy="190" r="60" fill="#0f1410"/>
-          <text x="190" y="185" text-anchor="middle" font-family="Fraunces, serif" font-size="14" fill="#f4f1e8" font-style="italic">Brand</text>
-          <text x="190" y="200" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#6b9b6b" letter-spacing="0.1em">PRESSURE</text>
+        <svg viewBox="0 0 360 360" width="100%" style="max-width:360px;" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="180" cy="180" r="160" stroke="#d4ceb8" stroke-width="0.5" stroke-dasharray="4 8"/>
+          <circle cx="180" cy="180" r="110" stroke="#c8c2a8" stroke-width="1" fill="rgba(245,242,234,0.5)"/>
+          <circle cx="180" cy="180" r="52" fill="#0d2818"/>
+          <text x="180" y="175" text-anchor="middle" font-family="Fraunces,serif" font-size="13" fill="#faf8f2" font-style="italic">Brand</text>
+          <text x="180" y="191" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" fill="#52b788" letter-spacing="0.15em">PRESSURE</text>
 
-          <!-- Pressure arrows pointing inward from 5 directions -->
-          <!-- Top: EPR -->
-          <path d="M190 80 L190 124" stroke="#c4633a" stroke-width="2" marker-end="url(#arr2)"/>
-          <rect x="145" y="42" width="90" height="32" rx="2" fill="#c4633a" opacity="0.12" stroke="#c4633a" stroke-width="1"/>
-          <text x="190" y="60" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" fill="#c4633a" letter-spacing="0.08em">EPR</text>
-          <text x="190" y="72" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" fill="#c4633a" letter-spacing="0.08em">REGULATIONS</text>
+          <!-- EPR top -->
+          <line x1="180" y1="128" x2="180" y2="68" stroke="#c9a84c" stroke-width="1.5" stroke-dasharray="4 4"/>
+          <circle cx="180" cy="58" r="28" fill="rgba(201,168,76,0.08)" stroke="#c9a84c" stroke-width="1"/>
+          <text x="180" y="55" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7.5" fill="#c9a84c" letter-spacing="0.08em">EPR</text>
+          <text x="180" y="66" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7.5" fill="#c9a84c" letter-spacing="0.08em">REGULATION</text>
 
-          <!-- Top-right: Global Standards -->
-          <path d="M300 110 L234 156" stroke="#c4633a" stroke-width="2" marker-end="url(#arr2)"/>
-          <rect x="285" y="70" width="82" height="32" rx="2" fill="#c4633a" opacity="0.12" stroke="#c4633a" stroke-width="1"/>
-          <text x="326" y="88" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#c4633a" letter-spacing="0.06em">GLOBAL</text>
-          <text x="326" y="99" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#c4633a" letter-spacing="0.06em">STANDARDS</text>
+          <!-- Global Standards top-right -->
+          <line x1="228" y1="148" x2="278" y2="108" stroke="#52b788" stroke-width="1.5" stroke-dasharray="4 4"/>
+          <circle cx="296" cy="95" r="28" fill="rgba(82,183,136,0.08)" stroke="#52b788" stroke-width="1"/>
+          <text x="296" y="91" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" fill="#52b788" letter-spacing="0.06em">GLOBAL</text>
+          <text x="296" y="102" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" fill="#52b788" letter-spacing="0.06em">STANDARDS</text>
 
-          <!-- Bottom-right: Recycled Content -->
-          <path d="M300 270 L234 224" stroke="#3d5a3d" stroke-width="2" marker-end="url(#arr3)"/>
-          <rect x="282" y="278" width="86" height="32" rx="2" fill="#3d5a3d" opacity="0.12" stroke="#3d5a3d" stroke-width="1"/>
-          <text x="325" y="295" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#3d5a3d" letter-spacing="0.06em">RECYCLED</text>
-          <text x="325" y="306" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#3d5a3d" letter-spacing="0.06em">CONTENT</text>
+          <!-- Recycled Content bottom-right -->
+          <line x1="228" y1="212" x2="278" y2="252" stroke="#52b788" stroke-width="1.5" stroke-dasharray="4 4"/>
+          <circle cx="296" cy="265" r="28" fill="rgba(82,183,136,0.08)" stroke="#52b788" stroke-width="1"/>
+          <text x="296" y="261" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" fill="#52b788" letter-spacing="0.06em">RECYCLED</text>
+          <text x="296" y="272" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" fill="#52b788" letter-spacing="0.06em">CONTENT</text>
 
-          <!-- Bottom: Reduce Plastic -->
-          <path d="M190 300 L190 256" stroke="#3d5a3d" stroke-width="2" marker-end="url(#arr3)"/>
-          <rect x="142" y="306" width="96" height="32" rx="2" fill="#3d5a3d" opacity="0.12" stroke="#3d5a3d" stroke-width="1"/>
-          <text x="190" y="323" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#3d5a3d" letter-spacing="0.08em">REDUCE</text>
-          <text x="190" y="334" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#3d5a3d" letter-spacing="0.08em">PLASTIC</text>
+          <!-- Reduce Plastic bottom -->
+          <line x1="180" y1="232" x2="180" y2="292" stroke="#c4633a" stroke-width="1.5" stroke-dasharray="4 4"/>
+          <circle cx="180" cy="302" r="28" fill="rgba(196,99,58,0.08)" stroke="#c4633a" stroke-width="1"/>
+          <text x="180" y="298" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7.5" fill="#c4633a" letter-spacing="0.08em">REDUCE</text>
+          <text x="180" y="309" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7.5" fill="#c4633a" letter-spacing="0.08em">PLASTIC</text>
 
-          <!-- Bottom-left: Sustainability -->
-          <path d="M80 270 L146 224" stroke="#3d5a3d" stroke-width="2" marker-end="url(#arr3)"/>
-          <rect x="10" y="278" width="88" height="32" rx="2" fill="#3d5a3d" opacity="0.12" stroke="#3d5a3d" stroke-width="1"/>
-          <text x="54" y="295" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#3d5a3d" letter-spacing="0.06em">SUSTAIN-</text>
-          <text x="54" y="306" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#3d5a3d" letter-spacing="0.06em">ABILITY</text>
-
-          <!-- Top-left: (removed, using 5 directions) -->
-          <defs>
-            <marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-              <path d="M0,0 L0,6 L8,3 z" fill="#c4633a"/>
-            </marker>
-            <marker id="arr3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-              <path d="M0,0 L0,6 L8,3 z" fill="#3d5a3d"/>
-            </marker>
-          </defs>
+          <!-- Sustainability bottom-left -->
+          <line x1="132" y1="212" x2="82" y2="252" stroke="#52b788" stroke-width="1.5" stroke-dasharray="4 4"/>
+          <circle cx="64" cy="265" r="28" fill="rgba(82,183,136,0.08)" stroke="#52b788" stroke-width="1"/>
+          <text x="64" y="261" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" fill="#52b788" letter-spacing="0.06em">SUSTAIN-</text>
+          <text x="64" y="272" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" fill="#52b788" letter-spacing="0.06em">ABILITY</text>
         </svg>
       </div>
     </div>
 
-    <div class="pillars reveal">
-      <div class="pillar">
-        <div class="pillar-icon">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-            <rect x="12" y="4" width="8" height="18" rx="4" stroke="#3d5a3d" stroke-width="1.5"/>
-            <path d="M10 22 L16 28 L22 22" stroke="#3d5a3d" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="16" y1="22" x2="16" y2="28" stroke="#3d5a3d" stroke-width="1.5" stroke-linecap="round"/>
+    <!-- Pillar cards -->
+    <div class="pillars" role="list">
+
+      <article class="pillar-card reveal reveal-delay-1" role="listitem">
+        <div class="pillar-card__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <rect x="8" y="2" width="6" height="14" rx="3" stroke="#52b788" stroke-width="1.4"/>
+            <path d="M7 16 L11 20 L15 16" stroke="#52b788" stroke-width="1.4" stroke-linecap="round"/>
+            <line x1="11" y1="16" x2="11" y2="20" stroke="#52b788" stroke-width="1.4" stroke-linecap="round"/>
           </svg>
         </div>
-        <div class="pillar-num">01</div>
-        <h3>Reduce <em>plastic waste</em></h3>
-        <p>Measurable, verifiable reduction targets across your entire packaging portfolio.</p>
-      </div>
-      <div class="pillar">
-        <div class="pillar-icon">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-            <path d="M16 4 C16 4 8 10 8 18 C8 22.4 11.6 26 16 26 C20.4 26 24 22.4 24 18 C24 10 16 4 16 4Z" stroke="#3d5a3d" stroke-width="1.5"/>
-            <path d="M16 14 L16 22" stroke="#3d5a3d" stroke-width="1.5" stroke-linecap="round"/>
-            <path d="M12 18 L16 14 L20 18" stroke="#3d5a3d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <div class="pillar-card__num">01</div>
+        <h3 class="pillar-card__title">Reduce <em>plastic waste</em></h3>
+        <p class="pillar-card__text">Measurable, verifiable reduction targets across your entire packaging portfolio.</p>
+      </article>
+
+      <article class="pillar-card reveal reveal-delay-2" role="listitem">
+        <div class="pillar-card__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <path d="M11 3 C11 3 5 7.5 5 13 A6 6 0 0 0 17 13 C17 7.5 11 3 11 3Z" stroke="#52b788" stroke-width="1.4"/>
+            <line x1="11" y1="10" x2="11" y2="16" stroke="#52b788" stroke-width="1.4" stroke-linecap="round"/>
+            <path d="M8 13 L11 10 L14 13" stroke="#52b788" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
-        <div class="pillar-num">02</div>
-        <h3>Meet <em>sustainability</em> goals</h3>
-        <p>Practical roadmaps that turn pledges into proof — not aspirational statements.</p>
-      </div>
-      <div class="pillar">
-        <div class="pillar-icon">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-            <path d="M6 16 C6 16 8 8 16 8" stroke="#3d5a3d" stroke-width="1.5" stroke-linecap="round" marker-end="url(#a1)"/>
-            <path d="M26 16 C26 16 24 24 16 24" stroke="#3d5a3d" stroke-width="1.5" stroke-linecap="round" marker-end="url(#a2)"/>
-            <circle cx="16" cy="16" r="4" fill="#3d5a3d" opacity="0.2" stroke="#3d5a3d" stroke-width="1.5"/>
+        <div class="pillar-card__num">02</div>
+        <h3 class="pillar-card__title">Meet <em>sustainability</em> goals</h3>
+        <p class="pillar-card__text">Practical roadmaps that turn pledges into proof — not aspirational statements.</p>
+      </article>
+
+      <article class="pillar-card reveal reveal-delay-3" role="listitem">
+        <div class="pillar-card__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <path d="M4 11 C4 11 5.5 5 11 5" stroke="#52b788" stroke-width="1.4" stroke-linecap="round" marker-end="url(#rc1)"/>
+            <path d="M18 11 C18 11 16.5 17 11 17" stroke="#52b788" stroke-width="1.4" stroke-linecap="round" marker-end="url(#rc2)"/>
+            <circle cx="11" cy="11" r="3" stroke="#52b788" stroke-width="1.4" fill="rgba(82,183,136,0.1)"/>
             <defs>
-              <marker id="a1" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3z" fill="#3d5a3d"/></marker>
-              <marker id="a2" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3z" fill="#3d5a3d"/></marker>
+              <marker id="rc1" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0L0,5L5,2.5z" fill="#52b788"/></marker>
+              <marker id="rc2" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0L0,5L5,2.5z" fill="#52b788"/></marker>
             </defs>
           </svg>
         </div>
-        <div class="pillar-num">03</div>
-        <h3>Increase <em>recycled content</em></h3>
-        <p>Technical depth and qualified supply chains to integrate recycled materials at scale.</p>
-      </div>
-      <div class="pillar">
-        <div class="pillar-icon">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-            <rect x="6" y="6" width="20" height="24" rx="2" stroke="#3d5a3d" stroke-width="1.5"/>
-            <line x1="10" y1="12" x2="22" y2="12" stroke="#3d5a3d" stroke-width="1" stroke-linecap="round"/>
-            <line x1="10" y1="16" x2="22" y2="16" stroke="#3d5a3d" stroke-width="1" stroke-linecap="round"/>
-            <line x1="10" y1="20" x2="18" y2="20" stroke="#3d5a3d" stroke-width="1" stroke-linecap="round"/>
-            <circle cx="21" cy="23" r="4" fill="#3d5a3d" opacity="0.15" stroke="#3d5a3d" stroke-width="1"/>
-            <path d="M19.5 23 L20.5 24 L22.5 22" stroke="#3d5a3d" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+        <div class="pillar-card__num">03</div>
+        <h3 class="pillar-card__title">Increase <em>recycled content</em></h3>
+        <p class="pillar-card__text">Technical depth and qualified supply chains to integrate recycled materials at scale.</p>
+      </article>
+
+      <article class="pillar-card reveal reveal-delay-4" role="listitem">
+        <div class="pillar-card__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <rect x="4" y="4" width="14" height="17" rx="2" stroke="#52b788" stroke-width="1.4" fill="none"/>
+            <line x1="7" y1="9"  x2="15" y2="9"  stroke="#52b788" stroke-width="1" stroke-linecap="round"/>
+            <line x1="7" y1="12" x2="15" y2="12" stroke="#52b788" stroke-width="1" stroke-linecap="round"/>
+            <line x1="7" y1="15" x2="12" y2="15" stroke="#52b788" stroke-width="1" stroke-linecap="round"/>
           </svg>
         </div>
-        <div class="pillar-num">04</div>
-        <h3>Comply with <em>EPR</em> regulations</h3>
-        <p>Audit-grade traceability — not self-attested numbers submitted on paper.</p>
-      </div>
-      <div class="pillar">
-        <div class="pillar-icon">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-            <circle cx="16" cy="16" r="10" stroke="#3d5a3d" stroke-width="1.5"/>
-            <ellipse cx="16" cy="16" rx="5" ry="10" stroke="#3d5a3d" stroke-width="1"/>
-            <line x1="6" y1="16" x2="26" y2="16" stroke="#3d5a3d" stroke-width="1"/>
-            <line x1="8" y1="11" x2="24" y2="11" stroke="#3d5a3d" stroke-width="0.8"/>
-            <line x1="8" y1="21" x2="24" y2="21" stroke="#3d5a3d" stroke-width="0.8"/>
+        <div class="pillar-card__num">04</div>
+        <h3 class="pillar-card__title">Comply with <em>EPR</em> regulations</h3>
+        <p class="pillar-card__text">Audit-grade traceability — not self-attested numbers submitted on paper.</p>
+      </article>
+
+      <article class="pillar-card reveal reveal-delay-5" role="listitem">
+        <div class="pillar-card__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <circle cx="11" cy="11" r="7.5" stroke="#52b788" stroke-width="1.4"/>
+            <ellipse cx="11" cy="11" rx="3.5" ry="7.5" stroke="#52b788" stroke-width="1"/>
+            <line x1="3.5" y1="11" x2="18.5" y2="11" stroke="#52b788" stroke-width="1"/>
+            <line x1="5"   y1="7.5" x2="17"  y2="7.5" stroke="#52b788" stroke-width="0.7"/>
+            <line x1="5"   y1="14.5" x2="17" y2="14.5" stroke="#52b788" stroke-width="0.7"/>
           </svg>
         </div>
-        <div class="pillar-num">05</div>
-        <h3>Meet global <em>standards</em></h3>
-        <p>BRSR, CSRD, CBAM, ISO 14067 — verified data chains from source to shelf.</p>
-      </div>
+        <div class="pillar-card__num">05</div>
+        <h3 class="pillar-card__title">Meet global <em>standards</em></h3>
+        <p class="pillar-card__text">BRSR, CSRD, CBAM, ISO 14067 — verified data chains from source to shelf.</p>
+      </article>
+
     </div>
   </div>
 </section>
 
-<!-- OUR APPROACH -->
-<section class="approach" id="approach">
+<!-- ===================== APPROACH ===================== -->
+<section class="approach" id="approach" aria-labelledby="approach-title">
   <div class="container">
-    <div class="approach-layout reveal">
-      <div class="approach-text">
-        <div class="section-tag">Our Approach</div>
-        <h2 class="section-h2">Four steps from <em>assessment</em> to measurable impact.</h2>
-        <p style="font-size:15px; color:var(--ink-soft); line-height:1.65; max-width:440px;">We don't parachute in with a framework. We start from a deep audit of your packaging reality and build a roadmap grounded in what's technically and commercially achievable — then execute it with you.</p>
+
+    <div class="approach__header reveal">
+      <div>
+        <span class="tag">Our Approach</span>
+        <h2 class="section-title" id="approach-title" style="margin-top:16px;">
+          Four steps from <em>assessment</em> to measurable impact.
+        </h2>
       </div>
-      <div class="approach-visual">
-        <!-- Step flow diagram -->
-        <svg viewBox="0 0 360 360" width="360" height="360" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Background grid lines -->
-          <line x1="180" y1="20" x2="180" y2="340" stroke="#c8c2a8" stroke-width="0.5" stroke-dasharray="4 8"/>
-          <line x1="20" y1="180" x2="340" y2="180" stroke="#c8c2a8" stroke-width="0.5" stroke-dasharray="4 8"/>
-
-          <!-- Step 1: Assess (top-left) -->
-          <rect x="20" y="20" width="140" height="140" rx="4" fill="#ebe6d4" stroke="#c8c2a8" stroke-width="1"/>
-          <!-- Magnifying glass icon -->
-          <circle cx="82" cy="78" r="24" stroke="#3d5a3d" stroke-width="2" fill="none"/>
-          <line x1="98" y1="96" x2="116" y2="114" stroke="#3d5a3d" stroke-width="2.5" stroke-linecap="round"/>
-          <circle cx="82" cy="78" r="14" stroke="#3d5a3d" stroke-width="1" fill="none" opacity="0.3"/>
-          <text x="90" y="138" text-anchor="middle" font-family="Fraunces, serif" font-size="16" fill="#0f1410" font-style="italic">Assess</text>
-
-          <!-- Arrow right from step 1 -->
-          <path d="M162 90 L198 90" stroke="#6b9b6b" stroke-width="1.5" marker-end="url(#arr4)"/>
-
-          <!-- Step 2: Design (top-right) -->
-          <rect x="200" y="20" width="140" height="140" rx="4" fill="#ebe6d4" stroke="#c8c2a8" stroke-width="1"/>
-          <!-- Compass icon -->
-          <circle cx="270" cy="82" r="26" stroke="#3d5a3d" stroke-width="1.5" fill="none"/>
-          <circle cx="270" cy="82" r="4" fill="#3d5a3d"/>
-          <line x1="270" y1="56" x2="270" y2="78" stroke="#3d5a3d" stroke-width="2" stroke-linecap="round"/>
-          <line x1="270" y1="86" x2="262" y2="108" stroke="#c4633a" stroke-width="2" stroke-linecap="round"/>
-          <line x1="270" y1="86" x2="278" y2="108" stroke="#c4633a" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
-          <text x="270" y="138" text-anchor="middle" font-family="Fraunces, serif" font-size="16" fill="#0f1410" font-style="italic">Design</text>
-
-          <!-- Arrow down from step 2 -->
-          <path d="M270 162 L270 198" stroke="#6b9b6b" stroke-width="1.5" marker-end="url(#arr4)"/>
-
-          <!-- Arrow down from step 1 (to implement via step 2 path) -->
-          <path d="M90 162 L90 198" stroke="#6b9b6b" stroke-width="1.5" marker-end="url(#arr4)"/>
-
-          <!-- Step 3: Implement (bottom-left) -->
-          <rect x="20" y="200" width="140" height="140" rx="4" fill="#3d5a3d" stroke="#3d5a3d" stroke-width="1"/>
-          <!-- Network/nodes icon -->
-          <circle cx="70" cy="258" r="12" fill="none" stroke="#6b9b6b" stroke-width="1.5"/>
-          <circle cx="110" cy="242" r="8" fill="none" stroke="#6b9b6b" stroke-width="1.5"/>
-          <circle cx="110" cy="278" r="8" fill="none" stroke="#6b9b6b" stroke-width="1.5"/>
-          <line x1="82" y1="255" x2="102" y2="247" stroke="#6b9b6b" stroke-width="1"/>
-          <line x1="82" y1="261" x2="102" y2="271" stroke="#6b9b6b" stroke-width="1"/>
-          <text x="90" y="318" text-anchor="middle" font-family="Fraunces, serif" font-size="16" fill="#f4f1e8" font-style="italic">Implement</text>
-
-          <!-- Arrow right from step 3 -->
-          <path d="M162 270 L198 270" stroke="#6b9b6b" stroke-width="1.5" marker-end="url(#arr4)"/>
-
-          <!-- Step 4: Track (bottom-right) -->
-          <rect x="200" y="200" width="140" height="140" rx="4" fill="#ebe6d4" stroke="#c8c2a8" stroke-width="1"/>
-          <!-- Chart icon -->
-          <rect x="232" y="290" width="12" height="24" fill="#3d5a3d" opacity="0.8" rx="1"/>
-          <rect x="250" y="274" width="12" height="40" fill="#3d5a3d" opacity="0.9" rx="1"/>
-          <rect x="268" y="258" width="12" height="56" fill="#3d5a3d" rx="1"/>
-          <rect x="286" y="268" width="12" height="46" fill="#6b9b6b" rx="1"/>
-          <line x1="224" y1="314" x2="308" y2="314" stroke="#c8c2a8" stroke-width="1"/>
-          <!-- Trend arrow -->
-          <path d="M230 285 L260 265 L285 255" stroke="#c4633a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          <text x="270" y="338" text-anchor="middle" font-family="Fraunces, serif" font-size="16" fill="#0f1410" font-style="italic">Track</text>
-
-          <defs>
-            <marker id="arr4" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
-              <path d="M0,0 L0,6 L7,3z" fill="#6b9b6b"/>
-            </marker>
-          </defs>
-        </svg>
+      <div class="approach__header-right">
+        <p class="body-text" style="padding-top:8px;">
+          We don't parachute in with a framework. We start from a deep audit of your packaging reality and build a roadmap grounded in what's technically and commercially achievable — then execute it with you.
+        </p>
       </div>
     </div>
 
-    <div class="approach-steps reveal">
-      <div class="step">
-        <div class="step-icon">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-            <circle cx="12" cy="12" r="7" stroke="#3d5a3d" stroke-width="1.5" fill="none"/>
-            <line x1="17" y1="17" x2="24" y2="24" stroke="#3d5a3d" stroke-width="2" stroke-linecap="round"/>
+    <div class="approach__steps" role="list">
+
+      <div class="step-card reveal reveal-delay-1" role="listitem">
+        <div class="step-card__dot" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <circle cx="14" cy="14" r="8" stroke="#52b788" stroke-width="1.8" fill="none"/>
+            <line x1="20" y1="20" x2="28" y2="28" stroke="#52b788" stroke-width="2.2" stroke-linecap="round"/>
           </svg>
         </div>
-        <div class="step-label">Step 01</div>
-        <h3>Assess</h3>
-        <ul>
+        <div class="step-card__num">Step 01</div>
+        <h3 class="step-card__title">Assess</h3>
+        <ul class="step-card__list">
           <li>Material selection audit</li>
           <li>Recyclability analysis</li>
           <li>Carbon footprint baseline</li>
           <li>Packaging performance review</li>
         </ul>
       </div>
-      <div class="step">
-        <div class="step-icon">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-            <circle cx="14" cy="14" r="8" stroke="#3d5a3d" stroke-width="1.5" fill="none"/>
-            <circle cx="14" cy="14" r="2" fill="#3d5a3d"/>
-            <line x1="14" y1="6" x2="14" y2="12" stroke="#3d5a3d" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="14" y1="16" x2="10" y2="22" stroke="#c4633a" stroke-width="1.5" stroke-linecap="round"/>
+
+      <div class="step-card reveal reveal-delay-2" role="listitem">
+        <div class="step-card__dot" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="16" r="9" stroke="#52b788" stroke-width="1.8" fill="none"/>
+            <circle cx="16" cy="16" r="2.5" fill="#52b788"/>
+            <line x1="16" y1="7" x2="16" y2="13.5" stroke="#52b788" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="16" y1="18.5" x2="12" y2="25" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/>
           </svg>
         </div>
-        <div class="step-label">Step 02</div>
-        <h3>Design</h3>
-        <ul>
+        <div class="step-card__num">Step 02</div>
+        <h3 class="step-card__title">Design</h3>
+        <ul class="step-card__list">
           <li>Circularity roadmaps</li>
           <li>Recycled content integration</li>
           <li>Design for recyclability</li>
           <li>Lightweighting strategies</li>
         </ul>
       </div>
-      <div class="step">
-        <div class="step-icon">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-            <circle cx="8" cy="14" r="4" stroke="#3d5a3d" stroke-width="1.5" fill="none"/>
-            <circle cx="20" cy="8" r="4" stroke="#3d5a3d" stroke-width="1.5" fill="none"/>
-            <circle cx="20" cy="20" r="4" stroke="#3d5a3d" stroke-width="1.5" fill="none"/>
-            <line x1="12" y1="14" x2="16" y2="10" stroke="#3d5a3d" stroke-width="1"/>
-            <line x1="12" y1="14" x2="16" y2="18" stroke="#3d5a3d" stroke-width="1"/>
+
+      <div class="step-card reveal reveal-delay-3" role="listitem">
+        <div class="step-card__dot" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <circle cx="9" cy="16" r="5" stroke="#52b788" stroke-width="1.8" fill="none"/>
+            <circle cx="23" cy="9" r="4" stroke="#52b788" stroke-width="1.8" fill="none"/>
+            <circle cx="23" cy="23" r="4" stroke="#52b788" stroke-width="1.8" fill="none"/>
+            <line x1="14" y1="14" x2="19" y2="11" stroke="#52b788" stroke-width="1.2"/>
+            <line x1="14" y1="18" x2="19" y2="21" stroke="#52b788" stroke-width="1.2"/>
           </svg>
         </div>
-        <div class="step-label">Step 03</div>
-        <h3>Implement</h3>
-        <ul>
+        <div class="step-card__num">Step 03</div>
+        <h3 class="step-card__title">Implement</h3>
+        <ul class="step-card__list">
           <li>Qualified suppliers</li>
           <li>Converter partnerships</li>
           <li>Recycler networks</li>
           <li>Brand approval playbooks</li>
         </ul>
       </div>
-      <div class="step">
-        <div class="step-icon">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-            <rect x="4" y="20" width="4" height="6" fill="#3d5a3d" rx="1"/>
-            <rect x="10" y="14" width="4" height="12" fill="#3d5a3d" rx="1" opacity="0.7"/>
-            <rect x="16" y="9" width="4" height="17" fill="#3d5a3d" rx="1" opacity="0.9"/>
-            <rect x="22" y="12" width="4" height="14" fill="#6b9b6b" rx="1"/>
-            <path d="M5 19 L12 13 L18 8" stroke="#c4633a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+      <div class="step-card reveal reveal-delay-4" role="listitem">
+        <div class="step-card__dot" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <rect x="5"  y="22" width="5" height="6"  fill="#52b788" rx="1" opacity="0.6"/>
+            <rect x="12" y="16" width="5" height="12" fill="#52b788" rx="1" opacity="0.8"/>
+            <rect x="19" y="10" width="5" height="18" fill="#52b788" rx="1"/>
+            <path d="M6 20 L14 13 L21 8" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
           </svg>
         </div>
-        <div class="step-label">Step 04</div>
-        <h3>Track</h3>
-        <ul>
+        <div class="step-card__num">Step 04</div>
+        <h3 class="step-card__title">Track</h3>
+        <ul class="step-card__list">
           <li>Recycled content monitoring</li>
           <li>Waste collection traceability</li>
           <li>Carbon savings verification</li>
           <li>Sustainability KPIs real-time</li>
         </ul>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- SOLUTIONS -->
-<section class="solutions" id="solutions">
+<!-- ===================== SOLUTIONS ===================== -->
+<section class="solutions" id="solutions" aria-labelledby="solutions-title">
   <div class="container">
-    <div class="solutions-intro reveal">
+
+    <div class="solutions__header reveal">
       <div>
-        <div class="section-tag">Our Solutions</div>
-        <h2 class="section-h2">Technology + Consulting + Packaging Expertise + <em>Execution.</em></h2>
-        <p style="font-size:15px; color:var(--ink-soft); line-height:1.65; max-width:420px; margin-top:-16px;">We don't just recommend sustainable solutions — we help brands implement, monitor and continuously improve them. Your sustainability goals become our delivery targets.</p>
+        <span class="tag">Our Solutions</span>
+        <h2 class="section-title" id="solutions-title" style="margin-top:16px;">
+          Technology + Consulting + Packaging Expertise + <em>Execution.</em>
+        </h2>
       </div>
-      <div class="solutions-visual">
-        <!-- Solutions wheel -->
-        <svg viewBox="0 0 340 340" width="340" height="340" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="170" cy="170" r="130" stroke="#c8c2a8" stroke-width="0.5"/>
-          <circle cx="170" cy="170" r="90" fill="#ebe6d4" stroke="#c8c2a8" stroke-width="1"/>
-          <circle cx="170" cy="170" r="50" fill="#3d5a3d"/>
-          <text x="170" y="165" text-anchor="middle" font-family="Fraunces, serif" font-size="11" fill="#f4f1e8" font-style="italic">Ayra</text>
-          <text x="170" y="179" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#6b9b6b" letter-spacing="0.1em">SOLUTIONS</text>
-
-          <!-- 6 solution spokes at 60° intervals -->
-          <!-- 0°: top -->
-          <line x1="170" y1="120" x2="170" y2="40" stroke="#3d5a3d" stroke-width="1" stroke-dasharray="3 5"/>
-          <rect x="130" y="10" width="80" height="26" rx="2" fill="#3d5a3d" opacity="0.1" stroke="#3d5a3d" stroke-width="1"/>
-          <text x="170" y="26" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7.5" fill="#3d5a3d" letter-spacing="0.08em">PACKAGING</text>
-          <text x="170" y="35" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7.5" fill="#3d5a3d" letter-spacing="0.08em">ADVISORY</text>
-
-          <!-- 60°: top-right -->
-          <line x1="248" y1="170" x2="302" y2="103" stroke="#3d5a3d" stroke-width="1" stroke-dasharray="3 5"/>
-          <rect x="282" y="78" width="50" height="26" rx="2" fill="#3d5a3d" opacity="0.1" stroke="#3d5a3d" stroke-width="1"/>
-          <text x="307" y="93" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#3d5a3d" letter-spacing="0.06em">CIRCULAR</text>
-          <text x="307" y="102" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#3d5a3d" letter-spacing="0.06em">STRATEGY</text>
-
-          <!-- 120°: bottom-right -->
-          <line x1="248" y1="220" x2="302" y2="237" stroke="#c4633a" stroke-width="1" stroke-dasharray="3 5"/>
-          <rect x="282" y="232" width="50" height="26" rx="2" fill="#c4633a" opacity="0.1" stroke="#c4633a" stroke-width="1"/>
-          <text x="307" y="247" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#c4633a" letter-spacing="0.06em">PERFORM-</text>
-          <text x="307" y="256" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#c4633a" letter-spacing="0.06em">ANCE</text>
-
-          <!-- 180°: bottom -->
-          <line x1="170" y1="260" x2="170" y2="310" stroke="#c4633a" stroke-width="1" stroke-dasharray="3 5"/>
-          <rect x="128" y="308" width="84" height="26" rx="2" fill="#c4633a" opacity="0.1" stroke="#c4633a" stroke-width="1"/>
-          <text x="170" y="323" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7.5" fill="#c4633a" letter-spacing="0.08em">RECYCLED</text>
-          <text x="170" y="332" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7.5" fill="#c4633a" letter-spacing="0.08em">MATERIALS</text>
-
-          <!-- 240°: bottom-left -->
-          <line x1="92" y1="220" x2="38" y2="237" stroke="#c4633a" stroke-width="1" stroke-dasharray="3 5"/>
-          <rect x="4" y="232" width="54" height="26" rx="2" fill="#c4633a" opacity="0.1" stroke="#c4633a" stroke-width="1"/>
-          <text x="31" y="247" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#c4633a" letter-spacing="0.06em">TECH</text>
-          <text x="31" y="256" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#c4633a" letter-spacing="0.06em">PLATFORM</text>
-
-          <!-- 300°: top-left -->
-          <line x1="92" y1="170" x2="38" y2="103" stroke="#3d5a3d" stroke-width="1" stroke-dasharray="3 5"/>
-          <rect x="0" y="78" width="54" height="26" rx="2" fill="#3d5a3d" opacity="0.1" stroke="#3d5a3d" stroke-width="1"/>
-          <text x="27" y="93" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#3d5a3d" letter-spacing="0.06em">EXECU-</text>
-          <text x="27" y="102" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#3d5a3d" letter-spacing="0.06em">TION</text>
-        </svg>
+      <div class="solutions__header-right">
+        <p class="body-text" style="padding-top:8px;">
+          We don't just recommend sustainable solutions — we help brands implement, monitor and continuously improve them. Your sustainability goals become our delivery targets.
+        </p>
       </div>
     </div>
 
-    <div class="solutions-grid reveal">
-      <div class="solution-card">
-        <div class="solution-icon">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-            <circle cx="16" cy="12" r="6" stroke="#3d5a3d" stroke-width="1.5" fill="none"/>
-            <path d="M10 12 L6 24 L16 20 L26 24 L22 12" stroke="#3d5a3d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.5"/>
-            <circle cx="16" cy="12" r="2" fill="#3d5a3d"/>
+    <div class="solutions__grid reveal">
+
+      <article class="sol-card">
+        <div class="sol-card__icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <circle cx="14" cy="10" r="5.5" stroke="#52b788" stroke-width="1.5" fill="none"/>
+            <path d="M8 10 L4 22 L14 18 L24 22 L20 10" stroke="#52b788" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.5"/>
+            <circle cx="14" cy="10" r="2" fill="#52b788"/>
           </svg>
         </div>
-        <div class="solution-num">01 / Advisory</div>
-        <h3>Sustainable Packaging <em>Advisory</em></h3>
-        <p>Practical strategies that improve recyclability, reduce environmental impact, and achieve sustainability goals — built on fifteen years of brand approvals.</p>
-        <div class="solution-tags">
-          <span class="solution-tag">Recyclability</span>
-          <span class="solution-tag">EPR</span>
-          <span class="solution-tag">Strategy</span>
+        <div class="sol-card__num">01 / Advisory</div>
+        <h3 class="sol-card__title">Sustainable Packaging <em>Advisory</em></h3>
+        <p class="sol-card__text">Practical strategies that improve recyclability, reduce environmental impact, and achieve sustainability goals — built on fifteen years of brand approvals.</p>
+        <div class="sol-tags">
+          <span class="sol-tag">Recyclability</span>
+          <span class="sol-tag">EPR</span>
+          <span class="sol-tag">Strategy</span>
         </div>
-      </div>
-      <div class="solution-card">
-        <div class="solution-icon">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-            <path d="M8 16 C8 16 10 8 16 8" stroke="#3d5a3d" stroke-width="1.5" stroke-linecap="round" marker-end="url(#b1)"/>
-            <path d="M24 16 C24 16 22 24 16 24" stroke="#3d5a3d" stroke-width="1.5" stroke-linecap="round" marker-end="url(#b2)"/>
-            <circle cx="16" cy="16" r="4" fill="#3d5a3d" opacity="0.15" stroke="#3d5a3d" stroke-width="1.5"/>
+      </article>
+
+      <article class="sol-card">
+        <div class="sol-card__icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <path d="M6 14 C6 14 8 6 14 6" stroke="#52b788" stroke-width="1.5" stroke-linecap="round" marker-end="url(#sc1)"/>
+            <path d="M22 14 C22 14 20 22 14 22" stroke="#52b788" stroke-width="1.5" stroke-linecap="round" marker-end="url(#sc2)"/>
+            <circle cx="14" cy="14" r="4" stroke="#52b788" stroke-width="1.5" fill="rgba(82,183,136,0.1)"/>
             <defs>
-              <marker id="b1" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0L0,5L5,2.5z" fill="#3d5a3d"/></marker>
-              <marker id="b2" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0L0,5L5,2.5z" fill="#3d5a3d"/></marker>
+              <marker id="sc1" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0L0,5L5,2.5z" fill="#52b788"/></marker>
+              <marker id="sc2" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0L0,5L5,2.5z" fill="#52b788"/></marker>
             </defs>
           </svg>
         </div>
-        <div class="solution-num">02 / Strategy</div>
-        <h3>Circular Economy <em>Strategy</em></h3>
-        <p>Closed-loop systems for packaging recovery, recycling and responsible material sourcing — from MRF gate to brand delivery.</p>
-        <div class="solution-tags">
-          <span class="solution-tag">Closed-loop</span>
-          <span class="solution-tag">Recovery</span>
-          <span class="solution-tag">Sourcing</span>
+        <div class="sol-card__num">02 / Strategy</div>
+        <h3 class="sol-card__title">Circular Economy <em>Strategy</em></h3>
+        <p class="sol-card__text">Closed-loop systems for packaging recovery, recycling and responsible material sourcing — from MRF gate to brand delivery.</p>
+        <div class="sol-tags">
+          <span class="sol-tag">Closed-loop</span>
+          <span class="sol-tag">Recovery</span>
+          <span class="sol-tag">Sourcing</span>
         </div>
-      </div>
-      <div class="solution-card">
-        <div class="solution-icon">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-            <rect x="5" y="22" width="5" height="7" fill="#3d5a3d" rx="1" opacity="0.6"/>
-            <rect x="13" y="16" width="5" height="13" fill="#3d5a3d" rx="1" opacity="0.8"/>
-            <rect x="21" y="10" width="5" height="19" fill="#3d5a3d" rx="1"/>
-            <path d="M6 20 L15 14 L22 9" stroke="#c4633a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </article>
+
+      <article class="sol-card">
+        <div class="sol-card__icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect x="4"  y="20" width="4" height="6"  fill="#52b788" rx="1" opacity="0.6"/>
+            <rect x="10" y="14" width="4" height="12" fill="#52b788" rx="1" opacity="0.8"/>
+            <rect x="16" y="8"  width="4" height="18" fill="#52b788" rx="1"/>
+            <path d="M5 18 L12 11 L17 7" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
           </svg>
         </div>
-        <div class="solution-num">03 / Performance</div>
-        <h3>Packaging Performance <em>Improvement</em></h3>
-        <p>Top load optimisation, lightweighting, drop performance, shelf-life enhancement and cost optimisation across your portfolio.</p>
-        <div class="solution-tags">
-          <span class="solution-tag">Lightweighting</span>
-          <span class="solution-tag">Top Load</span>
-          <span class="solution-tag">Cost</span>
+        <div class="sol-card__num">03 / Performance</div>
+        <h3 class="sol-card__title">Packaging Performance <em>Improvement</em></h3>
+        <p class="sol-card__text">Top load optimisation, lightweighting, drop performance, shelf-life enhancement and cost optimisation across your portfolio.</p>
+        <div class="sol-tags">
+          <span class="sol-tag">Lightweighting</span>
+          <span class="sol-tag">Top Load</span>
+          <span class="sol-tag">Cost</span>
         </div>
-      </div>
-      <div class="solution-card">
-        <div class="solution-icon">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-            <circle cx="16" cy="16" r="5" stroke="#3d5a3d" stroke-width="1.5" fill="none"/>
-            <circle cx="8" cy="10" r="3" stroke="#3d5a3d" stroke-width="1.5" fill="none"/>
-            <circle cx="24" cy="10" r="3" stroke="#3d5a3d" stroke-width="1.5" fill="none"/>
-            <circle cx="8" cy="22" r="3" stroke="#3d5a3d" stroke-width="1.5" fill="none"/>
-            <circle cx="24" cy="22" r="3" stroke="#3d5a3d" stroke-width="1.5" fill="none"/>
-            <line x1="11" y1="11" x2="13" y2="13" stroke="#3d5a3d" stroke-width="1"/>
-            <line x1="21" y1="11" x2="19" y2="13" stroke="#3d5a3d" stroke-width="1"/>
-            <line x1="11" y1="21" x2="13" y2="19" stroke="#3d5a3d" stroke-width="1"/>
-            <line x1="21" y1="21" x2="19" y2="19" stroke="#3d5a3d" stroke-width="1"/>
+      </article>
+
+      <article class="sol-card">
+        <div class="sol-card__icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <circle cx="14" cy="14" r="4" stroke="#52b788" stroke-width="1.5" fill="none"/>
+            <circle cx="6"  cy="8"  r="3" stroke="#52b788" stroke-width="1.5" fill="none"/>
+            <circle cx="22" cy="8"  r="3" stroke="#52b788" stroke-width="1.5" fill="none"/>
+            <circle cx="6"  cy="20" r="3" stroke="#52b788" stroke-width="1.5" fill="none"/>
+            <circle cx="22" cy="20" r="3" stroke="#52b788" stroke-width="1.5" fill="none"/>
+            <line x1="9"  y1="9"  x2="12" y2="11" stroke="#52b788" stroke-width="1"/>
+            <line x1="19" y1="9"  x2="16" y2="11" stroke="#52b788" stroke-width="1"/>
+            <line x1="9"  y1="19" x2="12" y2="17" stroke="#52b788" stroke-width="1"/>
+            <line x1="19" y1="19" x2="16" y2="17" stroke="#52b788" stroke-width="1"/>
           </svg>
         </div>
-        <div class="solution-num">04 / Materials</div>
-        <h3>Recycled Material <em>Integration</em></h3>
-        <p>PET, HDPE, PP and food contact materials — full compliance verification and qualified supply chain connections.</p>
-        <div class="solution-tags">
-          <span class="solution-tag">PET</span>
-          <span class="solution-tag">HDPE</span>
-          <span class="solution-tag">PP</span>
-          <span class="solution-tag">Food Contact</span>
+        <div class="sol-card__num">04 / Materials</div>
+        <h3 class="sol-card__title">Recycled Material <em>Integration</em></h3>
+        <p class="sol-card__text">PET, HDPE, PP and food contact materials — full compliance verification and qualified supply chain connections.</p>
+        <div class="sol-tags">
+          <span class="sol-tag">PET</span>
+          <span class="sol-tag">HDPE</span>
+          <span class="sol-tag">PP</span>
+          <span class="sol-tag">Food Contact</span>
         </div>
-      </div>
-      <div class="solution-card">
-        <div class="solution-icon">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-            <rect x="4" y="6" width="24" height="18" rx="2" stroke="#3d5a3d" stroke-width="1.5" fill="none"/>
-            <line x1="4" y1="10" x2="28" y2="10" stroke="#3d5a3d" stroke-width="1"/>
-            <circle cx="8" cy="8" r="1" fill="#c4633a"/>
-            <circle cx="12" cy="8" r="1" fill="#c4633a" opacity="0.5"/>
-            <circle cx="16" cy="8" r="1" fill="#c4633a" opacity="0.3"/>
-            <path d="M8 17 L12 14 L16 16 L22 12" stroke="#3d5a3d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            <line x1="10" y1="26" x2="22" y2="26" stroke="#3d5a3d" stroke-width="1.5" stroke-linecap="round"/>
+      </article>
+
+      <article class="sol-card">
+        <div class="sol-card__icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect x="3" y="5" width="22" height="16" rx="2" stroke="#52b788" stroke-width="1.5" fill="none"/>
+            <line x1="3" y1="9" x2="25" y2="9" stroke="#52b788" stroke-width="1"/>
+            <circle cx="7" cy="7" r="1" fill="#c4633a"/>
+            <circle cx="11" cy="7" r="1" fill="#c9a84c" opacity="0.6"/>
+            <path d="M7 16 L11 12 L15 14 L21 10" stroke="#52b788" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <line x1="9" y1="23" x2="19" y2="23" stroke="#52b788" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
         </div>
-        <div class="solution-num">05 / Technology</div>
-        <h3>Technology <em>Platform</em></h3>
-        <p>Digital Product Passport, Material Traceability, Carbon Calculator, ESG Dashboard and Real-time Analytics — audit-grade data for every kilogram.</p>
-        <div class="solution-tags">
-          <span class="solution-tag">Digital Passport</span>
-          <span class="solution-tag">Carbon Calc</span>
-          <span class="solution-tag">ESG</span>
-          <span class="solution-tag">Analytics</span>
+        <div class="sol-card__num">05 / Technology</div>
+        <h3 class="sol-card__title">Technology <em>Platform</em></h3>
+        <p class="sol-card__text">Digital Product Passport, Material Traceability, Carbon Calculator, ESG Dashboard and Real-time Analytics — audit-grade data for every kilogram.</p>
+        <div class="sol-tags">
+          <span class="sol-tag">Digital Passport</span>
+          <span class="sol-tag">Carbon Calc</span>
+          <span class="sol-tag">ESG</span>
         </div>
-      </div>
-      <div class="solution-card">
-        <div class="solution-icon">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-            <circle cx="16" cy="16" r="10" stroke="#3d5a3d" stroke-width="1.5" fill="none"/>
-            <path d="M10 16 L14 20 L22 12" stroke="#3d5a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </article>
+
+      <article class="sol-card">
+        <div class="sol-card__icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <circle cx="14" cy="14" r="9" stroke="#52b788" stroke-width="1.5" fill="none"/>
+            <path d="M9 14 L13 18 L20 10" stroke="#52b788" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
-        <div class="solution-num">06 / Value</div>
-        <h3>We don't just <em>recommend</em> — we execute.</h3>
-        <p>We stay through implementation, monitoring and continuous improvement. Your sustainability goals become our delivery targets — not a slide deck.</p>
-        <div class="solution-tags">
-          <span class="solution-tag">Implementation</span>
-          <span class="solution-tag">Monitoring</span>
-          <span class="solution-tag">Improvement</span>
+        <div class="sol-card__num">06 / Value</div>
+        <h3 class="sol-card__title">We don't just <em>recommend</em> — we execute.</h3>
+        <p class="sol-card__text">We stay through implementation, monitoring and continuous improvement. Your sustainability goals become our delivery targets — not a slide deck.</p>
+        <div class="sol-tags">
+          <span class="sol-tag">Implementation</span>
+          <span class="sol-tag">Monitoring</span>
+          <span class="sol-tag">Improvement</span>
         </div>
-      </div>
+      </article>
+
     </div>
   </div>
 </section>
 
-<!-- PLATFORM STRIP -->
-<div class="platform-strip">
+<!-- ===================== PLATFORM ===================== -->
+<div class="platform" id="platform" aria-labelledby="platform-title">
   <div class="container">
-    <div class="platform-inner reveal">
-      <div class="platform-text">
-        <div class="section-tag">Technology Platform</div>
-        <h2 class="platform-h2">Full supply chain <em>visibility</em> — from doorstep to brand delivery.</h2>
-        <div class="platform-features">
-          <div class="platform-feat">
-            <div class="platform-feat-name">Digital Product Passport</div>
-            <p>Every material, every step, permanently recorded.</p>
+    <div class="platform__inner reveal">
+
+      <div class="platform__text">
+        <span class="tag platform__tag">Technology Platform</span>
+        <h2 class="platform__title" id="platform-title">
+          Full supply chain <em>visibility</em> — from doorstep to brand delivery.
+        </h2>
+        <div class="platform__features">
+          <div class="pf-item">
+            <div class="pf-item__name">Digital Product Passport</div>
+            <p class="pf-item__text">Every material, every step, permanently recorded.</p>
           </div>
-          <div class="platform-feat">
-            <div class="platform-feat-name">Carbon Calculator</div>
-            <p>ISO 14067-aligned carbon savings, verifiable.</p>
+          <div class="pf-item">
+            <div class="pf-item__name">Carbon Calculator</div>
+            <p class="pf-item__text">ISO 14067-aligned carbon savings, verifiable.</p>
           </div>
-          <div class="platform-feat">
-            <div class="platform-feat-name">Waste Tracking</div>
-            <p>Collection through recycling, kilogram by kilogram.</p>
+          <div class="pf-item">
+            <div class="pf-item__name">Waste Tracking</div>
+            <p class="pf-item__text">Collection through recycling, kilogram by kilogram.</p>
           </div>
-          <div class="platform-feat">
-            <div class="platform-feat-name">ESG Dashboard</div>
-            <p>Real-time KPIs for BRSR, CSRD and CBAM reporting.</p>
+          <div class="pf-item">
+            <div class="pf-item__name">ESG Dashboard</div>
+            <p class="pf-item__text">Real-time KPIs for BRSR, CSRD and CBAM reporting.</p>
           </div>
-          <div class="platform-feat">
-            <div class="platform-feat-name">EPR Compliance</div>
-            <p>Audit-grade certificates, DigiLocker-issued.</p>
+          <div class="pf-item">
+            <div class="pf-item__name">EPR Compliance</div>
+            <p class="pf-item__text">Audit-grade certificates, DigiLocker-issued.</p>
           </div>
-          <div class="platform-feat">
-            <div class="platform-feat-name">Real-time Analytics</div>
-            <p>Live operational and sustainability intelligence.</p>
+          <div class="pf-item">
+            <div class="pf-item__name">Real-time Analytics</div>
+            <p class="pf-item__text">Live operational and sustainability intelligence.</p>
           </div>
         </div>
       </div>
-      <div class="platform-visual">
-        <!-- Platform dashboard illustration -->
-        <svg viewBox="0 0 400 320" width="400" height="320" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Dashboard frame -->
-          <rect x="10" y="10" width="380" height="300" rx="6" fill="#1a2a1a" stroke="#3d5a3d" stroke-width="1.5"/>
-          <!-- Top bar -->
-          <rect x="10" y="10" width="380" height="36" rx="6" fill="#2a3d2a"/>
-          <rect x="10" y="34" width="380" height="12" fill="#2a3d2a"/>
-          <circle cx="30" cy="28" r="5" fill="#c4633a" opacity="0.7"/>
-          <circle cx="45" cy="28" r="5" fill="#d4a44a" opacity="0.7"/>
-          <circle cx="60" cy="28" r="5" fill="#6b9b6b" opacity="0.7"/>
-          <text x="200" y="31" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#6b9b6b" letter-spacing="0.15em">AYRA · PLATFORM DASHBOARD</text>
 
-          <!-- Left panel: stat cards -->
-          <rect x="22" y="56" width="110" height="52" rx="3" fill="#2a3d2a" stroke="#3d5a3d" stroke-width="0.5"/>
-          <text x="32" y="72" font-family="JetBrains Mono, monospace" font-size="7" fill="#6b9b6b" letter-spacing="0.1em">EPR STATUS</text>
-          <text x="32" y="90" font-family="Fraunces, serif" font-size="20" fill="#f4f1e8" font-weight="300" font-style="italic">97.2%</text>
-          <text x="100" y="90" font-family="JetBrains Mono, monospace" font-size="7" fill="#6b9b6b">▲</text>
+      <div class="platform__visual">
+        <div class="browser-frame">
+          <div class="browser-bar">
+            <div class="browser-dot"></div>
+            <div class="browser-dot"></div>
+            <div class="browser-dot"></div>
+            <div class="browser-url">ayracarbon.com/dashboard</div>
+          </div>
+          <!-- Dashboard SVG -->
+          <svg viewBox="0 0 560 380" width="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="560" height="380" fill="#111a14"/>
+            <!-- Sidebar -->
+            <rect width="140" height="380" fill="#0d1410"/>
+            <text x="20" y="36" font-family="Fraunces,serif" font-size="14" fill="#faf8f2" font-style="italic">Ayra.</text>
+            <circle cx="24" cy="33" r="3" fill="#52b788"/>
+            <!-- Nav items -->
+            <rect x="12" y="50" width="116" height="28" rx="4" fill="rgba(82,183,136,0.12)"/>
+            <text x="32" y="68" font-family="Space Grotesk,sans-serif" font-size="9" fill="#52b788" letter-spacing="0.06em">Dashboard</text>
+            <text x="32" y="98"  font-family="Space Grotesk,sans-serif" font-size="9" fill="rgba(255,255,255,0.3)" letter-spacing="0.06em">Traceability</text>
+            <text x="32" y="122" font-family="Space Grotesk,sans-serif" font-size="9" fill="rgba(255,255,255,0.3)" letter-spacing="0.06em">Carbon</text>
+            <text x="32" y="146" font-family="Space Grotesk,sans-serif" font-size="9" fill="rgba(255,255,255,0.3)" letter-spacing="0.06em">EPR Certs</text>
+            <text x="32" y="170" font-family="Space Grotesk,sans-serif" font-size="9" fill="rgba(255,255,255,0.3)" letter-spacing="0.06em">ESG Report</text>
+            <text x="32" y="194" font-family="Space Grotesk,sans-serif" font-size="9" fill="rgba(255,255,255,0.3)" letter-spacing="0.06em">Analytics</text>
+            <!-- Main content -->
+            <text x="156" y="36" font-family="Space Grotesk,sans-serif" font-size="10" fill="rgba(255,255,255,0.5)" letter-spacing="0.12em">PLATFORM DASHBOARD</text>
+            <!-- KPI row -->
+            <rect x="156" y="50" width="90" height="56" rx="6" fill="#1a2e1e" stroke="rgba(82,183,136,0.2)" stroke-width="0.5"/>
+            <text x="166" y="68" font-family="Space Grotesk,sans-serif" font-size="7" fill="#52b788" letter-spacing="0.1em">EPR STATUS</text>
+            <text x="166" y="88" font-family="Fraunces,serif" font-size="20" fill="#faf8f2" font-style="italic" font-weight="300">97.2%</text>
+            <text x="240" y="75" font-family="Space Grotesk,sans-serif" font-size="8" fill="#52b788">▲ 2.1%</text>
 
-          <rect x="22" y="116" width="110" height="52" rx="3" fill="#2a3d2a" stroke="#3d5a3d" stroke-width="0.5"/>
-          <text x="32" y="132" font-family="JetBrains Mono, monospace" font-size="7" fill="#6b9b6b" letter-spacing="0.1em">CO₂ SAVED</text>
-          <text x="32" y="150" font-family="Fraunces, serif" font-size="18" fill="#f4f1e8" font-weight="300" font-style="italic">14k</text>
-          <text x="62" y="150" font-family="JetBrains Mono, monospace" font-size="7" fill="#6b9b6b">tCO₂e</text>
+            <rect x="256" y="50" width="90" height="56" rx="6" fill="#1a2e1e" stroke="rgba(82,183,136,0.2)" stroke-width="0.5"/>
+            <text x="266" y="68" font-family="Space Grotesk,sans-serif" font-size="7" fill="#52b788" letter-spacing="0.1em">CO₂ SAVED</text>
+            <text x="266" y="88" font-family="Fraunces,serif" font-size="20" fill="#faf8f2" font-style="italic" font-weight="300">14k</text>
+            <text x="295" y="88" font-family="Space Grotesk,sans-serif" font-size="8" fill="rgba(255,255,255,0.4)">tCO₂e</text>
 
-          <rect x="22" y="176" width="110" height="52" rx="3" fill="#2a3d2a" stroke="#3d5a3d" stroke-width="0.5"/>
-          <text x="32" y="192" font-family="JetBrains Mono, monospace" font-size="7" fill="#6b9b6b" letter-spacing="0.1em">TRACEABILITY</text>
-          <text x="32" y="210" font-family="Fraunces, serif" font-size="18" fill="#f4f1e8" font-weight="300" font-style="italic">100%</text>
+            <rect x="356" y="50" width="90" height="56" rx="6" fill="#1a2e1e" stroke="rgba(82,183,136,0.2)" stroke-width="0.5"/>
+            <text x="366" y="68" font-family="Space Grotesk,sans-serif" font-size="7" fill="#52b788" letter-spacing="0.1em">TONNES</text>
+            <text x="366" y="88" font-family="Fraunces,serif" font-size="20" fill="#faf8f2" font-style="italic" font-weight="300">8,400</text>
 
-          <rect x="22" y="236" width="110" height="52" rx="3" fill="#3d5a3d" stroke="#6b9b6b" stroke-width="0.5"/>
-          <text x="32" y="252" font-family="JetBrains Mono, monospace" font-size="7" fill="#6b9b6b" letter-spacing="0.1em">RECYCLED</text>
-          <text x="32" y="268" font-family="Fraunces, serif" font-size="18" fill="#f4f1e8" font-weight="300" font-style="italic">8,400</text>
-          <text x="32" y="280" font-family="JetBrains Mono, monospace" font-size="7" fill="#6b9b6b">TONNES TRACKED</text>
+            <rect x="456" y="50" width="90" height="56" rx="6" fill="rgba(82,183,136,0.08)" stroke="rgba(82,183,136,0.4)" stroke-width="0.5"/>
+            <text x="466" y="68" font-family="Space Grotesk,sans-serif" font-size="7" fill="#52b788" letter-spacing="0.1em">BRANDS</text>
+            <text x="466" y="88" font-family="Fraunces,serif" font-size="20" fill="#52b788" font-style="italic" font-weight="300">20+</text>
 
-          <!-- Right panel: chart -->
-          <rect x="144" y="56" width="234" height="136" rx="3" fill="#1e2e1e" stroke="#3d5a3d" stroke-width="0.5"/>
-          <text x="154" y="72" font-family="JetBrains Mono, monospace" font-size="7" fill="#6b9b6b" letter-spacing="0.1em">MATERIAL FLOW · 2026</text>
+            <!-- Chart -->
+            <rect x="156" y="120" width="260" height="130" rx="6" fill="#162019" stroke="rgba(82,183,136,0.15)" stroke-width="0.5"/>
+            <text x="168" y="138" font-family="Space Grotesk,sans-serif" font-size="7.5" fill="#52b788" letter-spacing="0.1em">MATERIAL FLOW · 2026</text>
+            <!-- Bars -->
+            <rect x="174" y="206" width="18" height="30" fill="rgba(82,183,136,0.4)" rx="1"/>
+            <rect x="198" y="196" width="18" height="40" fill="rgba(82,183,136,0.5)" rx="1"/>
+            <rect x="222" y="184" width="18" height="52" fill="rgba(82,183,136,0.65)" rx="1"/>
+            <rect x="246" y="172" width="18" height="64" fill="rgba(82,183,136,0.8)" rx="1"/>
+            <rect x="270" y="165" width="18" height="71" fill="#52b788" rx="1"/>
+            <rect x="294" y="158" width="18" height="78" fill="#52b788" rx="1"/>
+            <rect x="318" y="150" width="18" height="86" fill="#74c69d" rx="1"/>
+            <rect x="342" y="144" width="18" height="92" fill="#74c69d" rx="1"/>
+            <line x1="168" y1="237" x2="368" y2="237" stroke="rgba(82,183,136,0.2)" stroke-width="0.5"/>
+            <path d="M180 204 L204 193 L228 181 L252 169 L276 162 L300 156 L324 148 L348 143" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <text x="174" y="247" font-family="Space Grotesk,sans-serif" font-size="6" fill="rgba(255,255,255,0.25)">JAN</text>
+            <text x="198" y="247" font-family="Space Grotesk,sans-serif" font-size="6" fill="rgba(255,255,255,0.25)">FEB</text>
+            <text x="222" y="247" font-family="Space Grotesk,sans-serif" font-size="6" fill="rgba(255,255,255,0.25)">MAR</text>
+            <text x="246" y="247" font-family="Space Grotesk,sans-serif" font-size="6" fill="rgba(255,255,255,0.25)">APR</text>
+            <text x="270" y="247" font-family="Space Grotesk,sans-serif" font-size="6" fill="rgba(255,255,255,0.25)">MAY</text>
+            <text x="294" y="247" font-family="Space Grotesk,sans-serif" font-size="6" fill="rgba(255,255,255,0.25)">JUN</text>
+            <text x="318" y="247" font-family="Space Grotesk,sans-serif" font-size="6" fill="rgba(255,255,255,0.4)">JUL</text>
+            <text x="342" y="247" font-family="Space Grotesk,sans-serif" font-size="6" fill="rgba(255,255,255,0.4)">AUG</text>
 
-          <!-- Chart bars -->
-          <rect x="158" y="130" width="18" height="44" fill="#3d5a3d" rx="1" opacity="0.7"/>
-          <rect x="182" y="110" width="18" height="64" fill="#3d5a3d" rx="1" opacity="0.8"/>
-          <rect x="206" y="100" width="18" height="74" fill="#3d5a3d" rx="1"/>
-          <rect x="230" y="88" width="18" height="86" fill="#6b9b6b" rx="1"/>
-          <rect x="254" y="94" width="18" height="80" fill="#6b9b6b" rx="1" opacity="0.8"/>
-          <rect x="278" y="80" width="18" height="94" fill="#6b9b6b" rx="1"/>
-          <rect x="302" y="72" width="18" height="102" fill="#f4f1e8" rx="1" opacity="0.9"/>
-          <rect x="326" y="66" width="18" height="108" fill="#f4f1e8" rx="1"/>
-          <line x1="154" y1="176" x2="358" y2="176" stroke="#3d5a3d" stroke-width="0.5"/>
+            <!-- Supply chain trace -->
+            <rect x="430" y="120" width="120" height="130" rx="6" fill="#162019" stroke="rgba(82,183,136,0.15)" stroke-width="0.5"/>
+            <text x="442" y="138" font-family="Space Grotesk,sans-serif" font-size="7.5" fill="#52b788" letter-spacing="0.08em">TRACE</text>
+            <circle cx="465" cy="165" r="14" fill="rgba(82,183,136,0.15)" stroke="#52b788" stroke-width="1"/>
+            <text x="465" y="169" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" fill="#52b788">MRF</text>
+            <line x1="465" y1="179" x2="465" y2="192" stroke="#52b788" stroke-width="1" stroke-dasharray="2 2"/>
+            <circle cx="465" cy="205" r="12" fill="rgba(82,183,136,0.08)" stroke="rgba(82,183,136,0.4)" stroke-width="1"/>
+            <text x="465" y="209" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" fill="rgba(255,255,255,0.5)">SORT</text>
+            <line x1="465" y1="217" x2="465" y2="228" stroke="#52b788" stroke-width="1" stroke-dasharray="2 2"/>
+            <circle cx="465" cy="235" r="11" fill="#52b788"/>
+            <text x="465" y="239" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" fill="#0a0e0b">BRAND</text>
 
-          <!-- Months -->
-          <text x="167" y="185" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6" fill="#6b9b6b">JAN</text>
-          <text x="191" y="185" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6" fill="#6b9b6b">FEB</text>
-          <text x="215" y="185" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6" fill="#6b9b6b">MAR</text>
-          <text x="239" y="185" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6" fill="#6b9b6b">APR</text>
-          <text x="263" y="185" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6" fill="#6b9b6b">MAY</text>
-          <text x="287" y="185" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6" fill="#6b9b6b">JUN</text>
-          <text x="311" y="185" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6" fill="#f4f1e8">JUL</text>
-          <text x="335" y="185" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6" fill="#f4f1e8">AUG</text>
+            <!-- Bottom trace bar -->
+            <rect x="156" y="262" width="390" height="50" rx="6" fill="#162019" stroke="rgba(82,183,136,0.15)" stroke-width="0.5"/>
+            <text x="168" y="278" font-family="Space Grotesk,sans-serif" font-size="7.5" fill="#52b788" letter-spacing="0.1em">LIVE SUPPLY CHAIN</text>
+            <text x="168" y="300" font-family="Space Grotesk,sans-serif" font-size="8" fill="rgba(255,255,255,0.6)">Maharashtra MRF → Karnataka Recycler → FMCG Brand</text>
+            <rect x="390" y="289" width="54" height="14" rx="3" fill="rgba(82,183,136,0.15)" stroke="rgba(82,183,136,0.4)" stroke-width="0.5"/>
+            <text x="417" y="299" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="7" fill="#52b788" letter-spacing="0.05em">VERIFIED</text>
 
-          <!-- Bottom panel: supply chain trace -->
-          <rect x="144" y="200" width="234" height="88" rx="3" fill="#1e2e1e" stroke="#3d5a3d" stroke-width="0.5"/>
-          <text x="154" y="216" font-family="JetBrains Mono, monospace" font-size="7" fill="#6b9b6b" letter-spacing="0.1em">SUPPLY CHAIN TRACE</text>
-
-          <!-- Trace flow -->
-          <circle cx="168" cy="248" r="10" fill="#3d5a3d"/>
-          <text x="168" y="252" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6" fill="#f4f1e8">MRF</text>
-          <line x1="178" y1="248" x2="204" y2="248" stroke="#6b9b6b" stroke-width="1" stroke-dasharray="2 3"/>
-          <circle cx="214" cy="248" r="10" fill="#2a3d2a" stroke="#6b9b6b" stroke-width="1"/>
-          <text x="214" y="252" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6" fill="#6b9b6b">SORT</text>
-          <line x1="224" y1="248" x2="250" y2="248" stroke="#6b9b6b" stroke-width="1" stroke-dasharray="2 3"/>
-          <circle cx="260" cy="248" r="10" fill="#2a3d2a" stroke="#6b9b6b" stroke-width="1"/>
-          <text x="260" y="252" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6" fill="#6b9b6b">PROC</text>
-          <line x1="270" y1="248" x2="296" y2="248" stroke="#6b9b6b" stroke-width="1" stroke-dasharray="2 3"/>
-          <circle cx="306" cy="248" r="10" fill="#2a3d2a" stroke="#6b9b6b" stroke-width="1"/>
-          <text x="306" y="252" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6" fill="#6b9b6b">MFG</text>
-          <line x1="316" y1="248" x2="342" y2="248" stroke="#6b9b6b" stroke-width="1" stroke-dasharray="2 3"/>
-          <circle cx="352" cy="248" r="10" fill="#6b9b6b"/>
-          <text x="352" y="252" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6" fill="#0f1410">BRAND</text>
-
-          <text x="168" y="272" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="5.5" fill="#6b9b6b" opacity="0.7">Maharashtra</text>
-          <text x="214" y="272" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="5.5" fill="#6b9b6b" opacity="0.7">Verified</text>
-          <text x="260" y="272" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="5.5" fill="#6b9b6b" opacity="0.7">ISO 14067</text>
-          <text x="306" y="272" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="5.5" fill="#6b9b6b" opacity="0.7">Karnataka</text>
-          <text x="352" y="272" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="5.5" fill="#f4f1e8" opacity="0.9">Certified</text>
-        </svg>
+            <!-- Vertical divider -->
+            <line x1="142" y1="0" x2="142" y2="380" stroke="rgba(82,183,136,0.08)" stroke-width="1"/>
+          </svg>
+        </div>
       </div>
+
     </div>
   </div>
 </div>
 
-<!-- TEAM -->
-<section class="team" id="team">
+<!-- ===================== TEAM ===================== -->
+<section class="team" id="team" aria-labelledby="team-title">
   <div class="container">
-    <div class="team-intro reveal">
-      <h2>Built by people who've <em>been</em> on the shop floor.</h2>
-      <p>Most software founders learn the recycling business after raising the round. We learned it across fifteen years of converters, brand approvals, and L*a*b* colour values. The platform is the documentation of what we already knew.</p>
+
+    <div class="team__intro reveal">
+      <div>
+        <span class="tag">Our Team</span>
+        <h2 class="section-title" id="team-title" style="margin-top:16px;">
+          Built by people who've <em>been</em> on the shop floor.
+        </h2>
+      </div>
+      <p class="body-text team__intro">
+        Most software founders learn the recycling business after raising the round. We learned it across fifteen years of converters, brand approvals, and L*a*b* colour values. The platform is the documentation of what we already knew.
+      </p>
     </div>
 
-    <div class="founder reveal" id="contact">
-      <div style="width:100%">
-        <table style="width:100%; border-collapse:collapse; font-family:'Inter Tight',sans-serif; font-size:16px;">
-          <thead>
-            <tr style="border-bottom:2px solid var(--moss);">
-              <th style="text-align:left; padding:12px 24px; color:var(--moss); font-weight:600; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase;">Name</th>
-              <th style="text-align:left; padding:12px 24px; color:var(--moss); font-weight:600; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase;">Designation</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="border-bottom:1px solid var(--rule);">
-              <td style="padding:16px 24px; font-family:'Fraunces',serif; font-size:22px; letter-spacing:-0.01em;">Jatin Garg</td>
-              <td style="padding:16px 24px; color:var(--ink-soft); font-size:15px;">Director</td>
-            </tr>
-            <tr style="border-bottom:1px solid var(--rule);">
-              <td style="padding:16px 24px; font-family:'Fraunces',serif; font-size:22px; letter-spacing:-0.01em;">Saurav Upadhyay</td>
-              <td style="padding:16px 24px; color:var(--ink-soft); font-size:15px;">Director</td>
-            </tr>
-            <tr style="border-bottom:1px solid var(--rule);">
-              <td style="padding:16px 24px; font-family:'Fraunces',serif; font-size:22px; letter-spacing:-0.01em;">Sunit Mahajan</td>
-              <td style="padding:16px 24px; color:var(--ink-soft); font-size:15px;">Technical Consultant &amp; Cybersecurity Expert</td>
-            </tr>
-            <tr>
-              <td style="padding:16px 24px; font-family:'Fraunces',serif; font-size:22px; letter-spacing:-0.01em;">Rohit Iyer</td>
-              <td style="padding:16px 24px; color:var(--ink-soft); font-size:15px;">App Developer</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    <div class="team-table-wrap reveal" id="contact">
+      <table class="team-table" role="table" aria-label="Team members">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Designation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-name">Jatin Garg</td>
+            <td class="td-role">Director</td>
+          </tr>
+          <tr>
+            <td class="td-name">Saurav Upadhyay</td>
+            <td class="td-role">Director</td>
+          </tr>
+          <tr>
+            <td class="td-name">Sunit Mahajan</td>
+            <td class="td-role">Technical Consultant &amp; Cybersecurity Expert</td>
+          </tr>
+          <tr>
+            <td class="td-name">Rohit Iyer</td>
+            <td class="td-role">App Developer</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
+<!-- ===================== FOOTER ===================== -->
+<footer role="contentinfo">
   <div class="container">
-    <h2 class="footer-headline">
+    <h2 class="footer__headline reveal">
       The greatest threat to our planet is the belief that <em>someone else</em> will save it.
     </h2>
-    <div class="footer-grid">
-      <div class="footer-col">
-        <div class="footer-mark">Ayra<span>.</span></div>
-        <p class="footer-tagline">Technology + Consulting + Packaging Expertise + Execution. Accelerating the circular economy.</p>
+
+    <div class="footer__grid reveal">
+      <div class="footer__col">
+        <div class="footer__brand-name">Ayra<span>.</span></div>
+        <p class="footer__tagline">Technology + Consulting + Packaging Expertise + Execution. Accelerating the circular economy.</p>
       </div>
-      <div class="footer-col">
+      <div class="footer__col">
         <h4>Platform</h4>
         <ul>
           <li><a href="#">Digital Product Passport</a></li>
@@ -1035,7 +708,7 @@
           <li><a href="#">Real-time Analytics</a></li>
         </ul>
       </div>
-      <div class="footer-col">
+      <div class="footer__col">
         <h4>Services</h4>
         <ul>
           <li><a href="#">Packaging Advisory</a></li>
@@ -1044,7 +717,7 @@
           <li><a href="#">Recycled Materials</a></li>
         </ul>
       </div>
-      <div class="footer-col">
+      <div class="footer__col">
         <h4>Talk to us</h4>
         <ul>
           <li><a href="mailto:jatin@ayracarbon.com">jatin@ayracarbon.com</a></li>
@@ -1053,20 +726,13 @@
         </ul>
       </div>
     </div>
-    <div class="footer-bottom">
+
+    <div class="footer__bottom">
       <span>© 2026 Ayra Carbon Cycle Trace Pvt Ltd</span>
     </div>
   </div>
 </footer>
 
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
-
+<script src="js/app.js"></script>
 </body>
 </html>
